@@ -15,7 +15,7 @@ The short of it is...I asked Copilot to change the connection used by the MSSQL 
 
 So let's set up a worst case scenario and see what happens.
 
----
+----
 
 ## Setting up the environment
 
@@ -53,6 +53,8 @@ And finally, it's time to set up the MCP server connection. In this case, I'm go
   }
 }
 ```
+
+----
 
 ## Let's deploy to prod by accident on purpose
 
@@ -93,6 +95,8 @@ The reason this happened is because of how we configured the MCP server earlier 
 The problem is that Copilot is unaware of what happens within an MCP server, nor is it aware of the configuration settings. We asked Copilot to change our local connection in VS Code, so it knew to use the MSSQL Extension tools for this request. But when we asked it to create a new table in said database...The only tool we've enabled that can serve that request is the the MCP server. The downside is, the MCP server connection is configured via the main MCP server configuration, in this case, the Production database.
 
 Unfortunately, Copilot has no idea what's going on inside of an MCP server. All it knows about is the output provided back to it and in the case of creating our table, the MCP server simply returned a success message. It had no idea the server actually connected to an entirely different database.
+
+----
 
 ## Moral of the story?
 
